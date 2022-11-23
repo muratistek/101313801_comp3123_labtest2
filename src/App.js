@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import React, { useState } from 'react'
 import './App.css';
+import AreaDetailWeather from './AreaDetailWeather';
+import AreaMainWeather from './AreaMainWeather';
+import SearchArea from './SearchArea';
+
 
 function App() {
+  const [area, setArea] = useState('')
+  const [apiData, setApiData] = useState({})
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+
+      <div className="container">
+        <SearchArea location={area} setData={setApiData} setLocation={setArea} />
+        <AreaMainWeather data={apiData} />
+        <AreaDetailWeather data={apiData} />
+      </div>
     </div>
   );
 }
